@@ -14667,7 +14667,7 @@ ffmpeg -i input.mov -vf lensfun=make=Canon:model="Canon EOS 100D":lens_model="Ca
 
 @section libvmaf
 
-Calulate the VMAF (Video Multi-Method Assessment Fusion) score for a
+Calculate the VMAF (Video Multi-Method Assessment Fusion) score for a
 reference/distorted pair of input videos.
 
 The first input is the distorted video, and the second input is the reference video.
@@ -14686,28 +14686,28 @@ A `|` delimited list of vmaf models. Each model can be configured with a number 
 Default value: @code{"version=vmaf_v0.6.1"}
 
 @item model_path
-Deprecated, use model='path=...'.
+Deprecated, use 'model=path=...'.
 
 @item enable_transform
-Deprecated, use model='enable_transform=true'.
+Deprecated, use 'model=enable_transform=true'.
 
 @item phone_model
-Deprecated, use model='enable_transform=true'.
+Deprecated, use 'model=enable_transform=true'.
 
 @item enable_conf_interval
-Deprecated, use model='enable_conf_interval=true'.
+Deprecated, use 'model=enable_conf_interval=true'.
 
 @item feature
 A `|` delimited list of features. Each feature can be configured with a number of parameters.
 
 @item psnr
-Deprecated, use feature='name=psnr'.
+Deprecated, use 'feature=name=psnr'.
 
 @item ssim
-Deprecated, use feature='name=ssim'.
+Deprecated, use 'feature=name=ssim'.
 
 @item ms_ssim
-Deprecated, use feature='name=ms_ssim'.
+Deprecated, use 'feature=name=ms_ssim'.
 
 @item log_path
 Set the file path to be used to store log files.
@@ -14744,9 +14744,15 @@ ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf='model=version=vmaf_v0.6
 @end example
 
 @item
-Example with multiple addtional features:
+Example with multiple additional features:
 @example
 ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf='feature=name=psnr|name=ciede' -f null -
+@end example
+
+@item
+Example with an additional feature with extra parameters. Note that the colon to separate the parameters must be escaped with a double backslash:
+@example
+ffmpeg -i distorted.mpg -i reference.mpg -lavfi libvmaf='feature=name=cambi\\:enc_width=1920\\:enc_height=1080' -f null -
 @end example
 
 @item
